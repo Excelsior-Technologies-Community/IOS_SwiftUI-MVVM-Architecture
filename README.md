@@ -311,9 +311,9 @@ final class UserListViewModel: ObservableObject {
 
 ---
 
-## Important Developer Rules
+## ⚠️ Important Developer Rules
 
-### Do This
+### ✅ Do This
 
 * **Follow folder structure:** Maintains clean architecture.
 * **Keep Views simple:** Avoids massive Views.
@@ -321,7 +321,7 @@ final class UserListViewModel: ObservableObject {
 * **Use UseCases:** Single responsibility.
 * **Use Repositories:** Decoupled data access.
 
-### Avoid This
+### ❌ Avoid This
 
 * **API calls inside Views:** Leads to tight coupling.
 * **Validation inside Views:** Architecture violation.
