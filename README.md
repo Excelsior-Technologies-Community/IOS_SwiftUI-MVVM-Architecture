@@ -112,9 +112,9 @@ MVVM separates responsibilities clearly:
 
 ---
 
-## MVVM Implementation
+## 🧩 MVVM Implementation
 
-### View
+### 🟦 View
 
 * Display UI, observe ViewModel, and forward user actions.
 * SwiftUI owns the ViewModel lifecycle using `@StateObject`.
@@ -124,7 +124,7 @@ MVVM separates responsibilities clearly:
 
 ```
 
-### ViewModel
+### 🟩  ViewModel
 
 * Hold UI state and execute UseCases.
 * Expose state using `@Published`.
@@ -135,7 +135,7 @@ MVVM separates responsibilities clearly:
 
 ```
 
-### Model
+### 🟨  Model
 
 * Represent data with no UI or framework dependency.
 
@@ -150,7 +150,7 @@ struct User {
 
 ---
 
-## Folder Structure
+## 📂 Folder Structure
 
 Maintain this hierarchy to ensure the project remains organized:
 
@@ -192,9 +192,9 @@ MVVMTeachingApp
 
 ---
 
-## Code Explanation (File-by-File)
+## 🧾 Code Explanation (File-by-File)
 
-### 1. App Layer – `MVVMTeachingApp.swift`
+### 1️⃣ 1. App Layer – `MVVMTeachingApp.swift`
 
 Defines the application entry point and root view.
 
@@ -210,7 +210,7 @@ struct MVVMTeachingApp: App {
 
 ```
 
-### 2. Core Layer – `ViewState.swift`
+### 2️⃣ 2. Core Layer – `ViewState.swift`
 
 Represents UI state in a structured way to avoid multiple Boolean flags.
 
@@ -224,7 +224,7 @@ enum ViewState {
 
 ```
 
-### 3. Core Layer – `Validator.swift`
+### 3️⃣ 3. Core Layer – `Validator.swift`
 
 Centralizes validation logic.
 
@@ -241,7 +241,7 @@ enum Validator {
 
 ```
 
-### 4. Domain Layer – `User.swift`
+### 4️⃣ 4. Domain Layer – `User.swift`
 
 Business model independent of UI.
 
