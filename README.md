@@ -1,1 +1,1 @@
-# IOS_MVVMTeachingApp
+# IOS_MVVMArchitecture
