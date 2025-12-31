@@ -315,8 +315,8 @@ final class UserListViewModel: ObservableObject {
 
 ### ✅ Do This
 
-* 📂  **Follow folder structure:** Maintains clean architecture.
-* 🎯 **Keep Views simple:** Avoids massive Views.
+* **Follow folder structure:** Maintains clean architecture.
+* **Keep Views simple:** Avoids massive Views.
 * **Use ViewModels for logic:** Separation of concerns.
 * **Use UseCases:** Single responsibility.
 * **Use Repositories:** Decoupled data access.
