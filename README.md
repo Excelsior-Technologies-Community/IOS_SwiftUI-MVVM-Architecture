@@ -330,7 +330,7 @@ final class UserListViewModel: ObservableObject {
 
 ---
 
-## Final Note
+## 🏁 Final Note
 
 This project is not just about MVVM. It is about **discipline, structure, and responsibility separation**.
  
