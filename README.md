@@ -152,7 +152,6 @@ struct User {
 ⸻
 
 📂 MOST IMPORTANT: Folder Structure
-
 MVVMTeachingApp
 │
 ├── App
