@@ -204,57 +204,72 @@ MVVMTeachingApp
 
 
 ⸻
-
+ 
 ⚠️ Important Developer Rules
 
 ✅ Do This
-    •    Follow folder structure
-    •    Keep Views simple
-    •    Use ViewModels for logic
-    •    Use UseCases for business rules
-    •    Use Repository for data access
-    •    Use ViewState for UI states
+
+Best Practice    Why It Matters
+Follow folder structure    Maintains clean architecture and scalability
+Keep Views simple    Prevents Massive View problems
+Use ViewModels for logic    Separates UI from business logic
+Use UseCases for business rules    Ensures single responsibility
+Use Repository for data access    Decouples data source from UI
+Use ViewState for UI states    Avoids multiple boolean flags
+
 
 ⸻
 
 ❌ Avoid This
-    •    API calls inside Views
-    •    Validation inside Views
-    •    Multiple @main files
-    •    Random folder placement
-    •    Tight View-to-View coupling
+
+Common Mistake    Why It’s Harmful
+API calls inside Views    Creates tight coupling
+Validation inside Views    Breaks separation of concerns
+Multiple @main files    Causes build and runtime issues
+Random folder placement    Makes project hard to maintain
+Tight View-to-View coupling    Breaks scalability
+
 
 ⸻
 
 🧪 Testing Benefits of MVVM
 
-Because logic is separated:
-    •    ViewModels can be unit tested
-    •    UseCases can be tested independently
-    •    UI tests become simpler
+Benefit    Explanation
+ViewModel unit testing    Business logic can be tested without UI
+UseCase testing    Core logic is fully testable
+Simpler UI tests    UI only renders data
+
 
 ⸻
 
 🚀 How This Helps in Real Projects
-    •    Easier onboarding for new developers
-    •    Safer feature additions
-    •    Cleaner Git history
-    •    Better interview readiness
-    •    Production-grade scalability
+
+Advantage    Impact
+Easier onboarding    New developers understand structure quickly
+Safer feature additions    Changes don’t break unrelated screens
+Cleaner Git history    Smaller, focused commits
+Interview readiness    Demonstrates strong architecture knowledge
+Production scalability    App grows without architecture collapse
+
 
 ⸻
 
 🎓 Who Should Use This Project?
-    •    Beginners learning SwiftUI
-    •    Developers learning MVVM
-    •    Interview preparation
-    •    Teaching & mentoring
-    •    Production app templates
+
+Audience    Reason
+SwiftUI beginners    Learn MVVM correctly from day one
+iOS developers    Improve architecture skills
+Interview candidates    Showcase clean code practices
+Mentors & teachers    Ready-to-use teaching template
+Production teams    Solid starting point for real apps
+
 
 ⸻
 
 ✅ Final Note
 
-This project is not just about MVVM — it is about discipline.
-Follow the structure, and your app will stay clean even at scale.
+Key Message
+This project is not just about MVVM — it is about discipline. Following structure and responsibility separation keeps apps clean even at scale.
+
+
  
