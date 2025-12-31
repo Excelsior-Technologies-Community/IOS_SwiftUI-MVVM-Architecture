@@ -152,6 +152,12 @@ struct User {
 ⸻
 
 📂 MOST IMPORTANT: Folder Structure
+<h2>📂 MOST IMPORTANT: Folder Structure</h2>
+
+<p><strong>⚠️ This project is designed around its folder structure.</strong><br>
+Do not move files randomly, as each folder represents a clear architectural responsibility.</p>
+
+<pre><code>
 MVVMTeachingApp
 │
 ├── App
@@ -190,6 +196,7 @@ MVVMTeachingApp
 │       └── UserDetailView.swift
 │
 └── Assets.xcassets
+</code></pre>
 ⸻
 
 🧱 Layer Explanation (Why Each Exists)
