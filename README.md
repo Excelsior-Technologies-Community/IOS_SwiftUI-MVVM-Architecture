@@ -1,6 +1,11 @@
+ 
 📱 MVVMTeachingApp
 
 A clean, scalable SwiftUI MVVM architecture demo app built for learning, teaching, and real-world iOS development.
+
+⸻
+
+📌 Project Focus
 
 This project focuses on:
 	•	How MVVM actually works in practice
@@ -88,23 +93,23 @@ Result:
 🔄 How MVVM Works (Data Flow)
 
 User Action
-   ↓
+↓
 View
-   ↓
+↓
 ViewModel
-   ↓
+↓
 UseCase
-   ↓
+↓
 Repository
-   ↓
+↓
 API / Data Source
-   ↓
+↓
 Repository
-   ↓
+↓
 UseCase
-   ↓
+↓
 ViewModel (@Published updates)
-   ↓
+↓
 View (Auto UI refresh)
 
 Key Rule:
