@@ -127,7 +127,6 @@ MVVM separates responsibilities clearly:
 
 SwiftUI owns the ViewModel lifecycle using `@StateObject`.
 
-```swift
 @StateObject private var viewModel = UserListViewModel()
 
 
