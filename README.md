@@ -23,24 +23,24 @@ A clean, scalable SwiftUI MVVM architecture demo app built for learning, teachin
 
 This project demonstrates how to implement **MVVM (Model–View–ViewModel)** correctly in a SwiftUI application. It focuses on:
 
-* How MVVM works in practice.
-* Why MVVM is necessary for scalable apps.
-* How proper folder structure improves maintainability.
-* How to separate UI, business logic, and data layers.
+- 🧠 How MVVM works in practice
+- 📈 Why MVVM is necessary for scalable apps
+- 🗂️ How proper folder structure improves maintainability
+- 🔗 How to separate UI, business logic, and data layers
 
 ---
 
-## Introduction
+##🚀 Introduction
 
 Modern iOS applications grow very quickly. Without a strong architecture, projects become difficult to maintain, test, and scale. **MVVM (Model–View–ViewModel)** is one of the most effective architectures for SwiftUI applications.
 
 This project uses:
 
-* SwiftUI
-* Combine
-* async/await
-* Clean folder structure
-* Clear separation of responsibilities
+- 🧩 SwiftUI
+- 🔄 Combine
+- ⏳ async/await
+- 📂 Clean folder structure
+- 🧠 Clear separation of responsibilities
 
 > The most important part of this project is its **folder structure and responsibility separation**.
 
