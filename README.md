@@ -254,7 +254,7 @@ struct User: Identifiable, Decodable {
 
 ```
 
-### 5. Domain Layer – `FetchUsersUseCase.swift`
+### 5️⃣ 5. Domain Layer – `FetchUsersUseCase.swift`
 
 Encapsulates business logic for fetching users.
 
@@ -269,7 +269,7 @@ final class FetchUsersUseCase {
 
 ```
 
-### 6. Data Layer – `APIService.swift`
+### 6️⃣ 6. Data Layer – `APIService.swift`
 
 Handles network requests.
 
@@ -283,7 +283,7 @@ final class APIService {
 
 ```
 
-### 7. Presentation Layer – `UserListViewModel.swift`
+### 7️⃣ 7. Presentation Layer – `UserListViewModel.swift`
 
 Manages UI state and data loading.
 
@@ -313,13 +313,13 @@ final class UserListViewModel: ObservableObject {
 
 ## Important Developer Rules
 
-### Do This
+###✅  Do This
 
-* **Follow folder structure:** Maintains clean architecture.
-* **Keep Views simple:** Avoids massive Views.
-* **Use ViewModels for logic:** Separation of concerns.
-* **Use UseCases:** Single responsibility.
-* **Use Repositories:** Decoupled data access.
+*📂 **Follow folder structure:** Maintains clean architecture.
+*🎯 **Keep Views simple:** Avoids massive Views.
+*🧠  **Use ViewModels for logic:** Separation of concerns.
+*🧩  **Use UseCases:** Single responsibility.
+*🔗 **Use Repositories:** Decoupled data access.
 
 ### Avoid This
 
