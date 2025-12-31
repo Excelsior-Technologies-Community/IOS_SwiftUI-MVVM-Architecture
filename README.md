@@ -1,17 +1,25 @@
+
 📱 MVVMTeachingApp
 
 A clean, scalable SwiftUI MVVM architecture demo app built for learning, teaching, and real-world iOS development.
 
-This project focuses on how MVVM actually works in practice, why we need it, and how a proper folder structure keeps projects maintainable as they grow.
+This project focuses on:
+    •    How MVVM actually works in practice
+    •    Why we need MVVM
+    •    How a proper folder structure keeps projects maintainable as they grow
 
 ⸻
 
 🚀 Introduction
 
 Modern iOS apps grow very quickly.
-Without a strong architecture, projects become hard to maintain, hard to test, and painful to scale.
+Without a strong architecture, projects become:
+    •    Hard to maintain
+    •    Hard to test
+    •    Painful to scale
 
 MVVM (Model–View–ViewModel) is one of the most effective architectures for SwiftUI apps.
+
 This project demonstrates MVVM done the right way, using:
     •    SwiftUI
     •    Combine
@@ -26,13 +34,13 @@ This project demonstrates MVVM done the right way, using:
 🧠 What is MVVM?
 
 MVVM stands for:
+    •    Model – Data & business entities
+    •    View – UI only
+    •    ViewModel – Presentation logic & UI state
 
-Layer    Meaning
-Model    Data & business entities
-View    UI only
-ViewModel    Presentation logic & state
-
-MVVM ensures that UI does not contain business logic, and business logic does not depend on UI.
+MVVM ensures:
+    •    UI does not contain business logic
+    •    Business logic does not depend on UI
 
 ⸻
 
@@ -42,16 +50,16 @@ MVVM ensures that UI does not contain business logic, and business logic does no
 
 In many beginner projects:
     •    API calls are written inside Views
-    •    Validation is handled in Views
+    •    Validation is handled inside Views
     •    Navigation logic is mixed with UI
     •    Multiple Bool flags control UI state
 
 This leads to:
-    •    ❌ Massive Views (500–1000 lines)
-    •    ❌ Tight coupling between screens
-    •    ❌ Difficult debugging
-    •    ❌ No unit testing
-    •    ❌ Poor scalability
+    •    Massive Views (500–1000 lines)
+    •    Tight coupling between screens
+    •    Difficult debugging
+    •    No unit testing
+    •    Poor scalability
 
 This problem is known as the Massive View / ViewController problem.
 
@@ -70,17 +78,15 @@ Validation    Core utilities
 Navigation    Router
 
 Result:
-    •    ✔ Smaller files
-    •    ✔ Cleaner logic
-    •    ✔ Easier debugging
-    •    ✔ Testable code
-    •    ✔ Scalable architecture
+    •    Smaller files
+    •    Cleaner logic
+    •    Easier debugging
+    •    Testable code
+    •    Scalable architecture
 
 ⸻
 
 🔄 How MVVM Works (Data Flow)
-
-Typical MVVM Data Flow
 
 User Action
    ↓
@@ -102,8 +108,7 @@ ViewModel (@Published updates)
    ↓
 View (Auto UI refresh)
 
-Key Rule
-
+Key Rule:
 Views never talk directly to APIs or databases.
 
 ⸻
@@ -152,10 +157,8 @@ struct User {
 ⸻
 
 📂 MOST IMPORTANT: Folder Structure
-<h2>📂 MOST IMPORTANT: Folder Structure</h2>
 
-<p><strong>⚠️ This project is designed around its folder structure.</strong><br>
-Do not move files randomly, as each folder represents a clear architectural responsibility.</p>
+⚠️ This project is designed around its folder structure. Do not move files randomly.
 
 <pre><code>
 MVVMTeachingApp
@@ -197,64 +200,29 @@ MVVMTeachingApp
 │
 └── Assets.xcassets
 </code></pre>
-⸻
 
-🧱 Layer Explanation (Why Each Exists)
 
-🔹 App
-    •    Entry point
-    •    Sets root View
-    •    Contains no logic
-
-⸻
-
-🔹 Core
-    •    App-wide reusable logic
-    •    No UI dependency
-    •    Used across multiple features
-
-⸻
-
-🔹 Domain
-    •    Business rules
-    •    UseCases
-    •    Independent of UI & networking
-
-⸻
-
-🔹 Data
-    •    API calls
-    •    Repositories
-    •    Data source abstraction
-
-⸻
-
-🔹 Presentation
-    •    Views (UI)
-    •    ViewModels (state & logic)
 
 ⸻
 
 ⚠️ Important Developer Rules
 
 ✅ Do This
-
-✔ Follow folder structure
-✔ Keep Views simple
-✔ Use ViewModels for logic
-✔ Use UseCases for business rules
-✔ Use Repository for data access
-✔ Use ViewState for UI states
+    •    Follow folder structure
+    •    Keep Views simple
+    •    Use ViewModels for logic
+    •    Use UseCases for business rules
+    •    Use Repository for data access
+    •    Use ViewState for UI states
 
 ⸻
 
 ❌ Avoid This
-
-❌ API calls inside Views
-❌ Validation inside Views
-❌ Multiple @main files
-❌ Random folder placement
-❌ Tight View-to-View coupling
+    •    API calls inside Views
+    •    Validation inside Views
+    •    Multiple @main files
+    •    Random folder placement
+    •    Tight View-to-View coupling
 
 ⸻
 
@@ -289,3 +257,4 @@ Because logic is separated:
 
 This project is not just about MVVM — it is about discipline.
 Follow the structure, and your app will stay clean even at scale.
+ 
