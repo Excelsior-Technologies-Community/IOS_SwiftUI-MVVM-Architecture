@@ -252,8 +252,317 @@ UseCase	Isolated, testable logic
 UI Tests	UI only renders state
 
 
+⸻ 
+
+## Code Explanation With Examples (File-by-File)
+
+This section explains **what each file does**, **why it exists**, and **how the shown code fits into MVVM**.  
+Each explanation includes **actual code snippets** so developers can clearly understand the purpose of the code.
+
+---
+
+## App Layer
+
+### MVVMTeachingApp.swift
+
+**Purpose:**  
+Entry point of the application.
+
+**Why this file exists:**  
+Every SwiftUI app must have exactly one `@main` App file.  
+This file defines which View is shown when the app launches.
+
+**Code:**
+```swift
+@main
+struct MVVMTeachingApp: App {
+    var body: some Scene {
+        WindowGroup {
+            UserListView()
+        }
+    }
+}
+
+Explanation:
+	•	@main marks the app entry point
+	•	WindowGroup hosts the root SwiftUI view
+	•	No business logic should be written here
+
 ⸻
 
+Core Layer
+
+ViewState.swift
+
+Purpose:
+Represents the UI state in a structured way.
+
+Why this file exists:
+Instead of using multiple booleans like isLoading, hasError, etc.,
+we use a single enum to describe UI state clearly.
+
+Code:
+
+enum ViewState {
+    case idle
+    case loading
+    case success
+    case error(String)
+}
+
+Explanation:
+	•	ViewModels update ViewState
+	•	Views react to state changes
+	•	Makes UI logic predictable and readable
+
+⸻
+
+Validator.swift
+
+Purpose:
+Centralized validation logic.
+
+Why this file exists:
+Validation should not live in Views or ViewModels.
+This keeps logic reusable and testable.
+
+Code:
+
+enum Validator {
+    static func isValidEmail(_ email: String) -> Bool {
+        email.contains("@")
+    }
+
+    static func isValidPassword(_ password: String) -> Bool {
+        password.count >= 6
+    }
+}
+
+Explanation:
+	•	Static methods for easy reuse
+	•	Keeps validation logic out of UI
+
+⸻
+
+Domain Layer
+
+User.swift
+
+Purpose:
+Represents a business model.
+
+Why this file exists:
+Domain models must be independent of UI and frameworks.
+
+Code:
+
+struct User: Identifiable, Decodable {
+    let id: Int
+    let name: String
+    let email: String
+}
+
+Explanation:
+	•	Used across API, Repository, ViewModel, and View
+	•	Does not import SwiftUI
+
+⸻
+
+FetchUsersUseCase.swift
+
+Purpose:
+Encapsulates business logic for fetching users.
+
+Why this file exists:
+ViewModels should not contain business rules.
+
+Code:
+
+final class FetchUsersUseCase {
+    private let repository = UserRepository()
+
+    func execute(page: Int) async throws -> [User] {
+        try await repository.fetchUsers(page: page)
+    }
+}
+
+Explanation:
+	•	ViewModel calls execute()
+	•	Repository handles data source
+	•	UseCase keeps logic focused and testable
+
+⸻
+
+Data Layer
+
+APIEndpoint.swift
+
+Purpose:
+Defines all API endpoints in one place.
+
+Why this file exists:
+Avoids hardcoding URLs across the app.
+
+Code:
+
+enum APIEndpoint {
+    case users(page: Int)
+
+    var url: URL {
+        switch self {
+        case .users(let page):
+            return URL(string: "https://example.com/users?page=\(page)")!
+        }
+    }
+}
+
+Explanation:
+	•	Centralizes API configuration
+	•	Easy to update endpoints later
+
+⸻
+
+APIService.swift
+
+Purpose:
+Handles network requests.
+
+Why this file exists:
+Keeps networking code separate from business logic.
+
+Code:
+
+final class APIService {
+    func fetch<T: Decodable>(_ type: T.Type, from url: URL) async throws -> T {
+        let (data, _) = try await URLSession.shared.data(from: url)
+        return try JSONDecoder().decode(T.self, from: data)
+    }
+}
+
+Explanation:
+	•	Uses async/await
+	•	Generic method for decoding any model
+	•	Easy to mock in tests
+
+⸻
+
+UserRepository.swift
+
+Purpose:
+Acts as a bridge between APIService and UseCases.
+
+Why this file exists:
+Abstracts data source from business logic.
+
+Code:
+
+final class UserRepository {
+    private let apiService = APIService()
+
+    func fetchUsers(page: Int) async throws -> [User] {
+        try await apiService.fetch([User].self,
+                                   from: APIEndpoint.users(page: page).url)
+    }
+}
+
+Explanation:
+	•	ViewModels never call APIService directly
+	•	Repository can be replaced with local DB later
+
+⸻
+
+Presentation Layer
+
+UserListViewModel.swift
+
+Purpose:
+Manages user list state and data loading.
+
+Why this file exists:
+Separates UI from logic.
+
+Code:
+
+@MainActor
+final class UserListViewModel: ObservableObject {
+
+    @Published var users: [User] = []
+    @Published var state: ViewState = .idle
+
+    private let fetchUsersUseCase = FetchUsersUseCase()
+
+    func loadUsers() async {
+        state = .loading
+        do {
+            users = try await fetchUsersUseCase.execute(page: 1)
+            state = .success
+        } catch {
+            state = .error(error.localizedDescription)
+        }
+    }
+}
+
+Explanation:
+	•	Holds UI state
+	•	Calls UseCases
+	•	Publishes changes to View
+
+⸻
+
+UserListView.swift
+
+Purpose:
+Displays user list UI.
+
+Why this file exists:
+Views should only render data and handle user interaction.
+
+Code:
+
+struct UserListView: View {
+    @StateObject private var viewModel = UserListViewModel()
+
+    var body: some View {
+        List(viewModel.users) { user in
+            Text(user.name)
+        }
+        .task {
+            await viewModel.loadUsers()
+        }
+    }
+}
+
+Explanation:
+	•	Observes ViewModel
+	•	No business logic
+	•	UI updates automatically on state change
+
+⸻
+
+Summary
+	•	Every file has a single responsibility
+	•	UI and logic are cleanly separated
+	•	Code is testable and scalable
+	•	Easy for new developers to understand
+
+This structure demonstrates real-world MVVM, not just theory.
+
+⸻
+
+
+---
+
+## ✅ HOW TO USE THIS SAFELY
+
+1. Open `README.md`
+2. Scroll to bottom
+3. Paste this section
+4. Commit and push
+
+It will **render correctly on GitHub** and is **perfect for learning, interviews, and open-source**.
+
+---
+ 
 Real-World Benefits
 
 Benefit	Impact
