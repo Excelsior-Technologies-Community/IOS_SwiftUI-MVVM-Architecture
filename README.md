@@ -68,8 +68,6 @@ This problem is known as the Massive View / ViewController problem.
 
 ✅ How MVVM Solves This
 
-MVVM separates responsibilities clearly:
-
 Responsibility	Where it goes
 UI rendering	View
 UI state	ViewModel
@@ -154,124 +152,6 @@ struct User {
     let email: String
 }
 
-
-⸻
-
-📂 MOST IMPORTANT: Folder Structure
-
-⚠️ This project is designed around its folder structure. Do not move files randomly.
-
-<pre><code>
-MVVMTeachingApp
-│
-├── App
-│   └── MVVMTeachingApp.swift
-│
-├── Core
-│   ├── Navigation
-│   │   └── AppRouter.swift
-│   ├── State
-│   │   └── ViewState.swift
-│   └── Validation
-│       └── Validator.swift
-│
-├── Domain
-│   ├── Models
-│   │   └── User.swift
-│   └── UseCases
-│       ├── FetchUsersUseCase.swift
-│       └── LoginUseCase.swift
-│
-├── Data
-│   ├── Network
-│   │   ├── APIEndpoint.swift
-│   │   └── APIService.swift
-│   └── Repository
-│       └── UserRepository.swift
-│
-├── Presentation
-│   ├── ViewModels
-│   └── Views
-│
-└── Assets.xcassets
-</code></pre>
-
-
-
-⸻
-
-🌐 API & NETWORK LAYER — DETAILED EXPLANATION
-
-📌 APIEndpoint.swift
-
-Purpose:
-Defines all API URLs in one place.
-
-Why used:
-	•	Avoids hardcoded URLs
-	•	Easy to change environments
-	•	Centralized API management
-
-Example:
-
-enum APIEndpoint {
-    case users(page: Int)
-}
-
-
-⸻
-
-📌 APIService.swift
-
-Purpose:
-Handles actual network calls using URLSession.
-
-Why used:
-	•	Single responsibility
-	•	Reusable across app
-	•	Easy to mock for testing
-
-Example:
-
-func fetch<T: Decodable>(_ type: T.Type, from url: URL) async throws -> T
-
-
-⸻
-
-📌 UserRepository.swift
-
-Purpose:
-Acts as a bridge between APIService and UseCases.
-
-Why used:
-	•	ViewModels never call APIs directly
-	•	API source can be replaced with DB or cache later
-	•	Improves testability
-
-⸻
-
-🧠 USE CASES — WHY & HOW
-
-📌 FetchUsersUseCase
-
-Purpose:
-Contains business logic for fetching users.
-
-Why used:
-	•	Keeps ViewModel clean
-	•	One responsibility per use case
-	•	Easy to test
-
-⸻
-
-📌 LoginUseCase
-
-Purpose:
-Encapsulates login validation logic.
-
-Why used:
-	•	Avoids logic in ViewModel
-	•	Business rules stay in Domain layer
 
 ⸻
 
