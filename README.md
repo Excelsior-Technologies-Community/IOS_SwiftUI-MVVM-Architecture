@@ -153,15 +153,12 @@ struct User {
 
 📂 MOST IMPORTANT: Folder Structure
 
-⚠️ This project is designed around its folder structure.
-Do not move files randomly.
-
 MVVMTeachingApp
 │
 ├── App
-│   └── MVVMTeachingApp.swift        // App entry point
+│   └── MVVMTeachingApp.swift          // App entry point (@main)
 │
-├── Core                            // Reusable utilities
+├── Core                               // Reusable utilities
 │   ├── Navigation
 │   │   └── AppRouter.swift
 │   ├── State
@@ -169,21 +166,21 @@ MVVMTeachingApp
 │   └── Validation
 │       └── Validator.swift
 │
-├── Domain                          // Business logic (UI independent)
+├── Domain                             // Business logic (UI independent)
 │   ├── Models
 │   │   └── User.swift
 │   └── UseCases
 │       ├── FetchUsersUseCase.swift
 │       └── LoginUseCase.swift
 │
-├── Data                            // Data layer
+├── Data                               // Data layer
 │   ├── Network
 │   │   ├── APIEndpoint.swift
 │   │   └── APIService.swift
 │   └── Repository
 │       └── UserRepository.swift
 │
-├── Presentation                   // UI layer
+├── Presentation                      // UI layer
 │   ├── ViewModels
 │   │   ├── LoginViewModel.swift
 │   │   ├── UserListViewModel.swift
@@ -192,8 +189,8 @@ MVVMTeachingApp
 │       ├── LoginView.swift
 │       ├── UserListView.swift
 │       └── UserDetailView.swift
-
-
+│
+└── Assets.xcassets
 ⸻
 
 🧱 Layer Explanation (Why Each Exists)
