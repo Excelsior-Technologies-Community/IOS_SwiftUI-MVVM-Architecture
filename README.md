@@ -1,4 +1,5 @@
- # MVVMTeachingApp
+ 
+# MVVMTeachingApp
 
 A clean, scalable SwiftUI MVVM architecture demo app built for learning, teaching, and real-world iOS development.
 
@@ -13,6 +14,7 @@ It focuses on:
 - How MVVM works in practice
 - Why MVVM is necessary for scalable apps
 - How proper folder structure improves maintainability
+- How to separate UI, business logic, and data layers
 
 ---
 
@@ -49,6 +51,7 @@ MVVM ensures:
 
 - UI does not contain business logic
 - Business logic does not depend on UI
+- Code is easier to test and maintain
 
 ---
 
@@ -135,11 +138,12 @@ Responsibilities:
 - Observe ViewModel
 - Forward user actions to ViewModel
 
-**Example:**
+SwiftUI owns the ViewModel lifecycle using `@StateObject`.
+
 ```swift
 @StateObject private var viewModel = UserListViewModel()
 
-'''
+
 ⸻
 
 ViewModel
@@ -148,8 +152,6 @@ Responsibilities:
 	•	Hold UI state
 	•	Execute UseCases
 	•	Expose state using @Published
-
-Example:
 
 @Published var users: [User]
 @Published var state: ViewState
@@ -163,8 +165,6 @@ Model
 Responsibilities:
 	•	Represent data
 	•	Contain no UI or framework dependency
-
-Example:
 
 struct User {
     let id: Int
@@ -221,9 +221,7 @@ Code Explanation (File-by-File)
 App Layer – MVVMTeachingApp.swift
 
 Purpose:
-Application entry point.
-
-Code:
+Defines the application entry point and root view.
 
 @main
 struct MVVMTeachingApp: App {
@@ -234,18 +232,13 @@ struct MVVMTeachingApp: App {
     }
 }
 
-Explanation:
-	•	@main defines the app entry
-	•	No business logic should exist here
 
 ⸻
 
-Core – ViewState.swift
+Core Layer – ViewState.swift
 
 Purpose:
 Represents UI state in a structured way.
-
-Code:
 
 enum ViewState {
     case idle
@@ -260,12 +253,10 @@ Why used:
 
 ⸻
 
-Core – Validator.swift
+Core Layer – Validator.swift
 
 Purpose:
-Centralized validation logic.
-
-Code:
+Centralizes validation logic.
 
 enum Validator {
     static func isValidEmail(_ email: String) -> Bool {
@@ -280,12 +271,10 @@ enum Validator {
 
 ⸻
 
-Domain – User.swift
+Domain Layer – User.swift
 
 Purpose:
-Business model.
-
-Code:
+Business model independent of UI.
 
 struct User: Identifiable, Decodable {
     let id: Int
@@ -296,12 +285,10 @@ struct User: Identifiable, Decodable {
 
 ⸻
 
-Domain – FetchUsersUseCase.swift
+Domain Layer – FetchUsersUseCase.swift
 
 Purpose:
-Encapsulates business logic.
-
-Code:
+Encapsulates business logic for fetching users.
 
 final class FetchUsersUseCase {
     private let repository = UserRepository()
@@ -314,12 +301,10 @@ final class FetchUsersUseCase {
 
 ⸻
 
-Data – APIService.swift
+Data Layer – APIService.swift
 
 Purpose:
-Handles networking.
-
-Code:
+Handles network requests.
 
 final class APIService {
     func fetch<T: Decodable>(_ type: T.Type, from url: URL) async throws -> T {
@@ -331,12 +316,10 @@ final class APIService {
 
 ⸻
 
-Presentation – UserListViewModel.swift
+Presentation Layer – UserListViewModel.swift
 
 Purpose:
 Manages UI state and data loading.
-
-Code:
 
 @MainActor
 final class UserListViewModel: ObservableObject {
