@@ -46,7 +46,7 @@ This project uses:
 
 ---
 
-## What is MVVM?
+## 🧠What is MVVM?
 
 MVVM consists of three layers:
 
@@ -58,15 +58,15 @@ MVVM consists of three layers:
 
 **MVVM ensures:**
 
-* UI does not contain business logic.
-* Business logic does not depend on UI.
-* Code is easier to test and maintain.
+* ✅UI does not contain business logic.
+* ✅Business logic does not depend on UI.
+* ✅Code is easier to test and maintain.
 
 ---
 
 ## Why Do We Need MVVM?
 
-### Problems Without MVVM
+### ❌ Problems Without MVVM
 
 In many beginner projects:
 
@@ -77,14 +77,14 @@ In many beginner projects:
 
 **This leads to:**
 
-* **Massive Views** (500–1000 lines).
-* Tight coupling between screens.
-* Difficult debugging and no unit testing.
-* Poor scalability (the "Massive View/ViewController problem").
+* ❌**Massive Views** (500–1000 lines).
+* ❌Tight coupling between screens.
+* ❌Difficult debugging and no unit testing.
+* ❌Poor scalability (the "Massive View/ViewController problem").
 
 ---
 
-## How MVVM Solves This
+## ✅ How MVVM Solves This
 
 MVVM separates responsibilities clearly:
 
@@ -99,7 +99,7 @@ MVVM separates responsibilities clearly:
 
 ---
 
-## MVVM Data Flow
+## 🔄 MVVM Data Flow
 
 1. **User Action** → View
 2. **View** → ViewModel
@@ -108,7 +108,7 @@ MVVM separates responsibilities clearly:
 5. **Repository** → API / Data Source
 6. **Data flows back** → Repository → UseCase → ViewModel (`@Published` updates) → View (automatic UI refresh)
 
-**Key rule:** Views never communicate directly with APIs or databases.
+🔑 **Key rule:** Views never communicate directly with APIs or databases.
 
 ---
 
